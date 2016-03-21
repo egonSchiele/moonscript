@@ -1,0 +1,7 @@
+make watch
+moonscript is writteen in itself, so if the compile breaks, moonscript is broken and you will have to rebuiid it.. Inssstead moon watch will just compppile in memoory, so even if things break, moonscript isn't broken.
+
+run tests with: busted
+
+moonc -T foo.moon == parse tree
+moonc -X foo.moon == show lua and moonscript lines side by side to see where things came from

@@ -1,0 +1,1 @@
+- when you print a table with `print foo`, it should pretty print it automatically
