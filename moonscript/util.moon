@@ -130,8 +130,21 @@ safe_module = (name, tbl) ->
       error "Attempted to import non-existent `#{key}` from #{name}"
   }
 
+
+tprint = (tbl, indent) ->
+  if type(tbl) == "table"
+    for k, v in pairs(tbl)
+      formatting = string.rep("  ", indent) .. k .. ": "
+      if type(v) == "table"
+        print(formatting)
+        tprint(v, indent+1)
+      else
+        print (formatting .. tostring(v))
+  else
+    print tostring(v)
+
 {
   :moon, :pos_to_line, :get_closest_line, :get_line, :trim, :split, :dump,
-  :debug_posmap, :getfenv, :setfenv, :get_options, :unpack, :safe_module
+  :debug_posmap, :getfenv, :setfenv, :get_options, :unpack, :safe_module, :tprint
 }
 

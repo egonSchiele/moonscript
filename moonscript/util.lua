@@ -196,6 +196,22 @@ safe_module = function(name, tbl)
     end
   })
 end
+local tprint
+tprint = function(tbl, indent)
+  if type(tbl) == "table" then
+    for k, v in pairs(tbl) do
+      local formatting = string.rep("  ", indent) .. k .. ": "
+      if type(v) == "table" then
+        print(formatting)
+        tprint(v, indent + 1)
+      else
+        print((formatting .. tostring(v)))
+      end
+    end
+  else
+    return print(tostring(v))
+  end
+end
 return {
   moon = moon,
   pos_to_line = pos_to_line,
@@ -209,5 +225,6 @@ return {
   setfenv = setfenv,
   get_options = get_options,
   unpack = unpack,
-  safe_module = safe_module
+  safe_module = safe_module,
+  tprint = tprint
 }
